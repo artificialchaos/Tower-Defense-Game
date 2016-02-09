@@ -1,6 +1,5 @@
 class Creeps extends Object
 {
-  PVector position = new PVector(10,165);
   int speed = 10;
   int spawn;
   Creeps()
@@ -47,7 +46,9 @@ class Creeps extends Object
     pushMatrix();
     translate(position.x, position.y);
     fill(0,127,0);
-    rect(0,0,20,20);
+    rect(0,0,30,20);
+    fill(127,0,0);
+    rect(10,7,10,6);
     popMatrix();
   }
 }

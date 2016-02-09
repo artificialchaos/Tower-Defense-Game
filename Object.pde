@@ -1,5 +1,6 @@
 abstract class Object
 {
+  PVector position = new PVector(10,165);
 
   Object()
   {
