@@ -15,14 +15,11 @@ Creeps creeps;
 
 int cellSize = 50;
 Cell[][] Map = new Cell[16][9];
+Cell currentCell = null;
+ArrayList<Towers> TowersInGame = new ArrayList<Towers>();
 ArrayList<Object> Objects = new ArrayList<Object>();
 ArrayList<Object> Tower = new ArrayList<Object>();
-public boolean towerSelected = false;
-public boolean fixed = false;
-public int index = 0;
-public int[] arrayx = new int[64];
-public int[] arrayy = new int[64];
-public PVector towerPosition = new PVector(arrayx[index],arrayy[index]);
+
 
 
 void draw()
@@ -49,11 +46,16 @@ void draw()
   rect(300,475,100,100);
   
   
-  for(int i = Tower.size() - 1 ; i >= 0   ;i --)
+  /*for(int i = Tower.size() - 1 ; i >= 0   ;i --)
   {
     Object T1 = Tower.get(i);
     T1.update();
     T1.render();
+  }*/
+  
+  for(int i = 0 ; i < TowersInGame.size() ; i++)
+  {
+    TowersInGame.get(i).drawTower();
   }
   
   for(int i = Objects.size() - 1 ; i >= 0   ;i --)
@@ -69,10 +71,6 @@ void draw()
     enemy = new Creeps();
     Objects.add(enemy);
   }
-  //println(towerSelected, fixed);
-    println(Map.length, Map[0].length);
-  //creeps.update();
-  //creeps.render();
   cellCheck();
 }
 
@@ -83,35 +81,17 @@ void cellCheck()
   
   if(x < Map.length && y < Map[0].length)
   {
-    Map[x][y].cellOutline();
+    currentCell = Map[x][y];
+    currentCell.cellOutline();
   }
 }
-
-void mouseClicked() 
+void mousePressed()
 {
- 
-  
-    if(towerSelected == true)
+  if(currentCell != null)
+  {
+    if(currentCell.emptyCell())
     {
-        
-        fixed = true;
-        towerSelected = false;
-    }  
- 
-    if(mouseX > 50 && mouseX < 150 && towerSelected == false)
-    {
-       if(mouseY < 575 && mouseY > 475)
-       {
-          Object tower1 = null;
-          tower1 = new Towers();
-          Objects.add(tower1);
-          towerSelected = true;
-          fixed = false;
-       }
+      currentCell.buildTower(new Towers(currentCell.cellx, currentCell.celly));
     }
-   
+  } 
 }
-
-
-
-    

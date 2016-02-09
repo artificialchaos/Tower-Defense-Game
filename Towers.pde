@@ -1,35 +1,19 @@
-class Towers extends Object
-{
- 
-  Towers()
+class Towers 
+{ 
+  int cellX;
+  int cellY;
+  
+  void drawTower()
   {
-    
+    pushMatrix();
+    translate(cellX * cellSize, cellY * cellSize);
+    rect(12.5,12.5,25,25);
+    popMatrix();
   }
-  
-  void update()
+
+  Towers(int x, int y)
   {
-   
+    cellX = x;
+    cellY = y;
   }
-  
-  
-  void render()
-  {
-    
-    if(fixed == false)
-    {
-      pushMatrix();
-      translate(mouseX, mouseY);
-      rect(-25,-25,50,50);
-      popMatrix();
-    }
-    if(fixed == true)
-    {
-      pushMatrix();
-      translate(mouseX, mouseY);
-      rect(-25,-25,50,50);
-      popMatrix();
-    }
-    
-  }
-  
 }
