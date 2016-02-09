@@ -10,11 +10,11 @@ class Cell
     celly = y;
   }
 
-  
+   boolean onPath = false;
    Towers onCell = null;
    boolean emptyCell()
    {
-     if(onCell == null)
+     if(onCell == null && onPath == false)
      {
        return true;
      }
@@ -39,6 +39,5 @@ class Cell
     }
   
   }
-  
   
 }

@@ -84,6 +84,7 @@ void cellCheck()
     currentCell = Map[x][y];
     currentCell.cellOutline();
   }
+  setPath();
 }
 void mousePressed()
 {
@@ -94,4 +95,38 @@ void mousePressed()
       currentCell.buildTower(new Towers(currentCell.cellx, currentCell.celly));
     }
   } 
+}
+void setPath()
+{
+  Map[0][3].onPath = true;
+  Map[1][3].onPath = true;
+  Map[2][3].onPath = true;
+  Map[3][3].onPath = true;
+  Map[4][3].onPath = true;
+  Map[5][3].onPath = true;
+  Map[5][3].onPath = true;
+  Map[5][4].onPath = true;
+  Map[5][5].onPath = true;
+  Map[5][6].onPath = true;
+  Map[5][7].onPath = true;
+  Map[6][7].onPath = true;
+  Map[7][7].onPath = true;
+  Map[8][7].onPath = true;
+  Map[9][7].onPath = true;
+  Map[9][6].onPath = true;
+  Map[9][5].onPath = true;
+  Map[9][4].onPath = true;
+  Map[9][3].onPath = true;
+  Map[9][2].onPath = true;
+  Map[9][1].onPath = true;
+  Map[10][1].onPath = true;
+  Map[11][1].onPath = true;
+  Map[12][1].onPath = true;
+  Map[13][1].onPath = true;
+  Map[13][2].onPath = true;
+  Map[13][3].onPath = true;
+  Map[13][4].onPath = true;
+  Map[13][5].onPath = true;
+  Map[14][5].onPath = true;
+  Map[15][5].onPath = true;
 }
