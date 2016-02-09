@@ -1,7 +1,7 @@
 class Creeps extends Object
 {
   int speed = 10;
-  int spawn;
+ 
   Creeps()
   {
    
@@ -37,7 +37,7 @@ class Creeps extends Object
     {
       position.x ++;
     }
-    spawn++;
+    
     
   }
   

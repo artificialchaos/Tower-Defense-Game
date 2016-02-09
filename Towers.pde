@@ -3,30 +3,33 @@ class Towers extends Object
  
   Towers()
   {
-   
+    
   }
   
   void update()
   {
-    if( fixed == true )
-    {
-    towerPosition  = new PVector(mouseX,mouseY);
-    }
+   
   }
-
+  
   
   void render()
   {
-    pushMatrix();
+    
     if(fixed == false)
     {
+      pushMatrix();
       translate(mouseX, mouseY);
+      rect(-25,-25,50,50);
+      popMatrix();
     }
     if(fixed == true)
     {
-      translate(towerPosition.x,towerPosition.y);
+      pushMatrix();
+      translate(mouseX, mouseY);
+      rect(-25,-25,50,50);
+      popMatrix();
     }
-    rect(-25,-25,50,50);
-    popMatrix();
+    
   }
+  
 }

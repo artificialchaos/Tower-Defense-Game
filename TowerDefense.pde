@@ -2,15 +2,29 @@ void setup()
 {
   size(800, 600);
   creeps = new Creeps();
+  for(int cellx =0 ; cellx < Map.length ; cellx++)
+  {
+    for(int celly =0 ; celly < Map[0].length ; celly++)
+    {
+      Map[cellx][celly] = new Cell( cellx, celly );
+    }
+  }
 }
 
 Creeps creeps;
 
+int cellSize = 50;
+Cell[][] Map = new Cell[16][9];
 ArrayList<Object> Objects = new ArrayList<Object>();
 ArrayList<Object> Tower = new ArrayList<Object>();
 public boolean towerSelected = false;
 public boolean fixed = false;
-public PVector towerPosition;
+public int index = 0;
+public int[] arrayx = new int[64];
+public int[] arrayy = new int[64];
+public PVector towerPosition = new PVector(arrayx[index],arrayy[index]);
+
+
 void draw()
 {
   background(0);
@@ -55,33 +69,49 @@ void draw()
     enemy = new Creeps();
     Objects.add(enemy);
   }
-  println(towerSelected, fixed);
- 
+  //println(towerSelected, fixed);
+    println(Map.length, Map[0].length);
   //creeps.update();
   //creeps.render();
+  cellCheck();
 }
 
+void cellCheck()
+{
+  int x = (int)(mouseX / cellSize);
+  int y = (int)(mouseY / cellSize);
+  
+  if(x < Map.length && y < Map[0].length)
+  {
+    Map[x][y].cellOutline();
+  }
+}
 
 void mouseClicked() 
 {
-  if(towerSelected == true)
-  {
-      fixed = true;
-      towerSelected = false;
-  }  
+ 
   
-  if(mouseX > 50 && mouseX < 150 && towerSelected == false)
-  {
-     if(mouseY < 575 && mouseY > 475)
-     {
-        Object tower1 = null;
-        tower1 = new Towers();
-        Objects.add(tower1);
-        towerSelected = true;
-        fixed = false;
-     }
-  }
+    if(towerSelected == true)
+    {
+        
+        fixed = true;
+        towerSelected = false;
+    }  
+ 
+    if(mouseX > 50 && mouseX < 150 && towerSelected == false)
+    {
+       if(mouseY < 575 && mouseY > 475)
+       {
+          Object tower1 = null;
+          tower1 = new Towers();
+          Objects.add(tower1);
+          towerSelected = true;
+          fixed = false;
+       }
+    }
+   
 }
+
 
 
     
