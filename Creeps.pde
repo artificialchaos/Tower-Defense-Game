@@ -5,36 +5,43 @@ class Creeps extends Object
   {
    
   }
-  
+
   void update()
   {
-    if(position.x < 260 && position.y == 165)
+    if(position.x < 260 && position.y == 165)//the bounds of the course before a turn is made
     {
-      position.x ++;
+     
+      creepDir = forward;//the direction is changed at each corner
     }
     if(position.x == 260 && position.y < 370)
     {
-      position.y ++;
+      
+      creepDir = down;
     }
     if(position.x < 460 && position.y == 370)
     {
-      position.x ++;
+     
+      creepDir = forward;
     }
     if(position.x == 460 && position.y > 70)
     {
-      position.y --;
+ 
+      creepDir = up;
     }
     if(position.x < 660 && position.y == 70)
     {
-      position.x ++;
+
+      creepDir = forward;
     }
     if(position.x == 660 && position.y < 265)
     {
-      position.y ++;
+
+      creepDir = down;
     }
     if(position.x < 830 && position.x > 600 && position.y == 265)
     {
-      position.x ++;
+
+      creepDir = forward;
     }
     if(position.x > 800 )
     {
@@ -45,13 +52,12 @@ class Creeps extends Object
     {
       Objects.remove(this);
       score = score + 100;
+      money = money + 1;
     }
-    //println(position.x,position.y);
-    //px = this.position.x;
-    //py = this.position.y;
+    position.add(creepDir);
   }
   
-  void render()
+  void render()//creeps are drawn
   {
     pushMatrix();
     translate(position.x, position.y);
@@ -59,6 +65,8 @@ class Creeps extends Object
     rect(0,0,30,20);
     fill(127,0,0);
     rect(10,7,10,6);
+    fill(50);
+    rect(18,9,15,2);
     popMatrix();
   }
 }

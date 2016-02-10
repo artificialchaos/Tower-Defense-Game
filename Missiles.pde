@@ -4,15 +4,15 @@ class Missiles extends Object
   {
     speed = 1.0f;
   }
-  
   void update()
   {
      if (Mpos.x < 0 || Mpos.y < 0 || Mpos.x > width || Mpos.y > height - 150)
      {
       Objects.remove(this);
      }
-     //dir.x = sin(theta);
-     //dir.y = -cos(theta);
+     dir.x = sin(theta);
+     dir.y = -cos(theta);
+     println(theta);
      dir.mult(speed);
      Mpos.add(dir);
   }

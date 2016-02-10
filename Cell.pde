@@ -24,7 +24,7 @@ class Cell
      }
    }
  
-  void cellOutline()
+  void cellOutline()//outlines the cell the mouse is hovering over
   {
     stroke(0,127,0);
     noFill();

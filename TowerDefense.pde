@@ -5,7 +5,7 @@ void setup()
   {
     for(int celly =0 ; celly < Map[0].length ; celly++)
     {
-      Map[cellx][celly] = new Cell( cellx, celly );
+      Map[cellx][celly] = new Cell( cellx, celly );//creating the grid of cells
     }
   }
 }
@@ -16,7 +16,6 @@ Cell currentCell = null;
 ArrayList<Towers> TowersInGame = new ArrayList<Towers>();
 ArrayList<Object> Objects = new ArrayList<Object>();
 ArrayList<Object> Tower = new ArrayList<Object>();
-//ArrayList<Object> Missile = new ArrayList<Object>();
 public int towerChoice = 1;
 public int lives = 20;
 public int money = 200;
@@ -53,7 +52,7 @@ void draw()
     obj.render();
   }
   
-  if (frameCount % 90 == 0)
+  if (frameCount % 90 == 0)//spawns a creep every 90 frames
   {
     Object enemy = null;
     enemy = new Creeps();
@@ -62,14 +61,14 @@ void draw()
   stroke(0);
   fill(255);
   textSize(20);
-  text("Lives: " + lives,120,520);
+  text("Lives: " + lives,120,520);//displays the players score
   text("Money: $" + money,320,520);
   text("Score: " + score,570,520);
   cellCheck();
   checkCollisions();
   //Towers.render();
   
-  if (lives < 1)
+  if (lives < 1)//This is the gameover screen
   {
     fill(0);
     rect(0,0,800,600);
@@ -81,7 +80,7 @@ void draw()
   }
 }
 
-void cellCheck()
+void cellCheck()//checks what cell the user is hovering over
 {
   int x = (int)(mouseX / cellSize);
   int y = (int)(mouseY / cellSize);
@@ -93,7 +92,7 @@ void cellCheck()
   }
   setPath();
 }
-void mousePressed()
+void mousePressed()//if a user clicks on a cell and it is available a new tower is built there
 {
   if(currentCell != null)
   {
@@ -108,7 +107,7 @@ void mousePressed()
   } 
 }
 
-void setPath()
+void setPath()//sets the path to prevent towers being build on it
 {
   Map[0][3].onPath = true;
   Map[1][3].onPath = true;
@@ -153,11 +152,13 @@ void checkCollisions()
       for(int j = Objects.size() - 1 ; j >= 0   ;j --)
       {
         Object other = Objects.get(j);
-        if (other instanceof Missiles) // Check the type of a object
+        if (other instanceof Missiles) 
         {
-          // Bounding circle collisions
-
-          if (obj.position.dist(other.Mpos) < 20)
+          
+          PVector temp = new PVector(0,0);
+          temp.x = other.Mpos.x + 15;
+          temp.y = other.Mpos.y + 10;
+          if (obj.position.dist(temp) < 25)//checks if the distance between the two objects is below a certain distance
           {
             Objects.remove(other);
             obj.health--;

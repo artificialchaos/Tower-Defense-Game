@@ -6,11 +6,14 @@ class Towers extends Object
   void drawTower()
   {
      pushMatrix();      
-     fill(0,0,255);
+     fill(200);
      translate(cellX * cellSize, cellY * cellSize);
-     rect(12.5,12.5,25,25);
+     ellipse(25,25,35,35);
+     fill(200,0,0);
+     ellipse(25,25,10,10);
      popMatrix();
      render();
+     update();
   }
   
   Towers(int x, int y)
@@ -36,13 +39,14 @@ class Towers extends Object
     if (frameCount % 60 == 0)
     {
       for( int i = 0 ; i < Objects.size() ; i++ )
-       {
-         //println(dist((cellX * cellSize) + 12.5 , (cellY * cellSize) + 12.5, Objects.get(i).position.x, Objects.get(i).position.y));     
-         if(dist((cellX * cellSize) + 25 , (cellY * cellSize) + 25, Objects.get(i).position.x, Objects.get(i).position.y) < 300)
+       {  
+         if(dist((cellX * cellSize) + 25 , (cellY * cellSize) + 25, Objects.get(i).position.x, Objects.get(i).position.y) < 250)
          {
            inRange = true;
+           Objects.get(i).theta = tan(sq(((cellX * cellSize) + 25) - Objects.get(i).position.x)/sq(((cellY * cellSize) + 25) - Objects.get(i).position.y));
          }
        }
+       
        if(inRange == true)
        {
          shoot();
@@ -51,7 +55,9 @@ class Towers extends Object
   }
   void update()
   {
-   
+       //println(sqrt(sq(((cellX * cellSize) + 25) - Objects.get(i).position.x) + sq(((cellY * cellSize) + 25) - Objects.get(i).position.y)));
+       //theta = atan(sq(((cellX * cellSize) + 25) - Objects.get(i).position.x)/sq(((cellY * cellSize) + 25) - Objects.get(i).position.y));
+       //println(theta);
   }
   
 }
