@@ -41,13 +41,13 @@ class Towers extends Object
          //println(dist((cellX * cellSize) + 12.5 , (cellY * cellSize) + 12.5, Objects.get(i).position.x, Objects.get(i).position.y));     
          if(dist((cellX * cellSize) + 12.5 , (cellY * cellSize) + 12.5, Objects.get(i).position.x, Objects.get(i).position.y) < 200)
          {
+           println(dir.x,dir.y);
            inRange = true;
          }
        }
        if(inRange == true)
        {
          shoot();
-         println("test");
        }
     }
   }

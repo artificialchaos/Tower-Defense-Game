@@ -20,6 +20,7 @@ ArrayList<Object> Tower = new ArrayList<Object>();
 public int towerChoice = 1;
 public int lives = 20;
 public int money = 200;
+public int score = 0;
 
 void draw()
 {
@@ -60,9 +61,10 @@ void draw()
   }
   stroke(0);
   fill(255);
-  textSize(25);
-  text("Lives: " + lives,150,520);
-  text("Money: $" + money,500,520);
+  textSize(20);
+  text("Lives: " + lives,120,520);
+  text("Money: $" + money,320,520);
+  text("Score: " + score,570,520);
   cellCheck();
   //Towers.render();
   
@@ -73,6 +75,8 @@ void draw()
     textSize(100);
     fill(255);
     text("Game Over",135, 200);
+    textSize(75);
+    text("Final Score: " + score,160, 400);
   }
 }
 

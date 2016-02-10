@@ -47,6 +47,7 @@ class Creeps extends Object
     if(health < 1)
     {
       Objects.remove(this);
+      score = score + 100;
     }
     //println(position.x,position.y);
     //px = this.position.x;
