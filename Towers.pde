@@ -1,4 +1,4 @@
-class Towers 
+class Towers extends Object
 { 
   int cellX;
   int cellY;
@@ -16,4 +16,11 @@ class Towers
     cellX = x;
     cellY = y;
   }
+  void render()
+  {
+  }
+  void update()
+  {
+  }
+  
 }
