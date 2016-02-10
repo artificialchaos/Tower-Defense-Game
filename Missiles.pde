@@ -11,6 +11,8 @@ class Missiles extends Object
      {
       Objects.remove(this);
      }
+     //dir.x = sin(theta);
+     //dir.y = -cos(theta);
      dir.mult(speed);
      Mpos.add(dir);
   }

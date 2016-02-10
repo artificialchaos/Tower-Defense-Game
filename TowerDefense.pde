@@ -66,6 +66,7 @@ void draw()
   text("Money: $" + money,320,520);
   text("Score: " + score,570,520);
   cellCheck();
+  checkCollisions();
   //Towers.render();
   
   if (lives < 1)
@@ -140,4 +141,29 @@ void setPath()
   Map[13][5].onPath = true;
   Map[14][5].onPath = true;
   Map[15][5].onPath = true;
+}
+
+void checkCollisions()
+{
+ for(int i = Objects.size() - 1 ; i >= 0   ;i --)
+ {
+    Object obj = Objects.get(i);
+    if (obj instanceof Creeps)
+    {
+      for(int j = Objects.size() - 1 ; j >= 0   ;j --)
+      {
+        Object other = Objects.get(j);
+        if (other instanceof Missiles) // Check the type of a object
+        {
+          // Bounding circle collisions
+
+          if (obj.position.dist(other.Mpos) < 20)
+          {
+            Objects.remove(other);
+            obj.health--;
+          }
+        }
+      }
+    }
+ } 
 }

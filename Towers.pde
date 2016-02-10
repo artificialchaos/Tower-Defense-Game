@@ -20,12 +20,11 @@ class Towers extends Object
   }
   void shoot()
   {
-    //Missiles missile = new Missiles();
     Object missile = null;
     missile = new Missiles();
     Objects.add(missile);
-    missile.Mpos.x = (cellX * cellSize) + 12.5;
-    missile.Mpos.y = (cellY * cellSize) + 12.5;
+    missile.Mpos.x = (cellX * cellSize) + 25;
+    missile.Mpos.y = (cellY * cellSize) + 25;
   }
   
   boolean inRange = false;
@@ -39,9 +38,8 @@ class Towers extends Object
       for( int i = 0 ; i < Objects.size() ; i++ )
        {
          //println(dist((cellX * cellSize) + 12.5 , (cellY * cellSize) + 12.5, Objects.get(i).position.x, Objects.get(i).position.y));     
-         if(dist((cellX * cellSize) + 12.5 , (cellY * cellSize) + 12.5, Objects.get(i).position.x, Objects.get(i).position.y) < 200)
+         if(dist((cellX * cellSize) + 25 , (cellY * cellSize) + 25, Objects.get(i).position.x, Objects.get(i).position.y) < 300)
          {
-           println(dir.x,dir.y);
            inRange = true;
          }
        }

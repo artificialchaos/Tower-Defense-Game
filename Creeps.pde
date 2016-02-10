@@ -1,9 +1,6 @@
 class Creeps extends Object
 {
-  int speed = 10;
-  int health = 5;
-  public float px;
-  public float py;
+  
   Creeps()
   {
    
