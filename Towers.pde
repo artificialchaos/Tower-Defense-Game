@@ -5,34 +5,13 @@ class Towers extends Object
   
   void drawTower()
   {
-    if(towerChoice == 1)
-    {  
-      pushMatrix();
-      fill(0,0,255);
-      translate(cellX * cellSize, cellY * cellSize);
-      rect(12.5,12.5,25,25);
-      popMatrix();
-    }
-    if(towerChoice == 2)
-    {  
-      pushMatrix();
-      fill(255,0,0);
-      translate(cellX * cellSize, cellY * cellSize);
-      rect(12.5,12.5,25,25);
-      popMatrix();
-    }
-    if(towerChoice == 3)
-    {  
-      pushMatrix();
-      fill(0,255,0);
-      translate(cellX * cellSize, cellY * cellSize);
-      rect(12.5,12.5,25,25);
-      popMatrix();
-    }
-    //println(px , py);
-    
+     pushMatrix();      
+     fill(0,0,255);
+     translate(cellX * cellSize, cellY * cellSize);
+     rect(12.5,12.5,25,25);
+     popMatrix();
   }
-
+  
   Towers(int x, int y)
   {
     cellX = x;
@@ -44,13 +23,26 @@ class Towers extends Object
     Mpos.x = (cellX * cellSize) + 12.5;
     Mpos.y = (cellY * cellSize) + 12.5;
   }
+  
+  /*boolean inRange()
+  {
+    if(dist((cellX * cellSize) + 12.5 , (cellY * cellSize) + 12.5, .position.x, .position.y) < 200)
+    {
+      return true;
+    }
+    else
+    {
+      return false;
+    }
+  }*/
+  
   void render()
   {
-    if(dist((cellX * cellSize) + 12.5 , (cellY * cellSize) + 12.5, creeps.position.x, creeps.position.y) < 200)
+    /*if(inRange == true)
     {
       println("test");
       shoot();
-    }
+    }*/
   }
   void update()
   {

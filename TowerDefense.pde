@@ -1,7 +1,6 @@
 void setup()
 {
   size(800, 600);
-  creeps = new Creeps();
   for(int cellx =0 ; cellx < Map.length ; cellx++)
   {
     for(int celly =0 ; celly < Map[0].length ; celly++)
@@ -11,8 +10,6 @@ void setup()
   }
 }
 
-Creeps creeps;
-
 int cellSize = 50;
 Cell[][] Map = new Cell[16][9];
 Cell currentCell = null;
@@ -21,6 +18,7 @@ ArrayList<Object> Objects = new ArrayList<Object>();
 ArrayList<Object> Tower = new ArrayList<Object>();
 public int towerChoice = 1;
 public int lives = 20;
+public int money = 100;
 
 void draw()
 {
@@ -35,17 +33,13 @@ void draw()
   rect(500,50,150,50);
   rect(650,50,50,250);
   rect(700,250,100,50);
-  
-
-  
   //draw the menu
   noStroke();
   fill(0,127,127);
   rect(0,450,800,150);
-  fill(127);
-  rect(50,475,100,100);
-  rect(175,475,100,100);
-  rect(300,475,100,100);
+  
+
+
   
   for(int i = 0 ; i < TowersInGame.size() ; i++)
   {
@@ -67,6 +61,7 @@ void draw()
   }
   stroke(255);
   text("Lives: " + lives,700,500);
+  text("Money: $" + money,700,540);
   cellCheck();
 }
 
@@ -88,34 +83,15 @@ void mousePressed()
   {
     if(currentCell.emptyCell())
     {
-      currentCell.buildTower(new Towers(currentCell.cellx, currentCell.celly));
+      if(money >= 20)
+      {
+        money = money - 20;
+        currentCell.buildTower(new Towers(currentCell.cellx, currentCell.celly));
+      }
     }
   } 
 }
-void mouseClicked()
-{
-  if(mouseX > 50 && mouseX < 150)
-  {
-    if(mouseY > 475 && mouseY < 575)
-    {
-      towerChoice = 1;
-    }
-  }
-  if(mouseX > 175 && mouseX < 275)
-  {
-    if(mouseY > 475 && mouseY < 575)
-    {
-      towerChoice = 2;
-    }
-  }
-  if(mouseX > 300 && mouseX < 400)
-  {
-    if(mouseY > 475 && mouseY < 575)
-    {
-      towerChoice = 3;
-    }
-  }
-}
+
 void setPath()
 {
   Map[0][3].onPath = true;

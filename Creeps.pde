@@ -1,6 +1,7 @@
 class Creeps extends Object
 {
   int speed = 10;
+  int health = 5;
   public float px;
   public float py;
   Creeps()
@@ -41,6 +42,10 @@ class Creeps extends Object
     if(position.x > 800 )
     {
       lives--;
+      Objects.remove(this);
+    }
+    if(health < 1)
+    {
       Objects.remove(this);
     }
     //println(position.x,position.y);
