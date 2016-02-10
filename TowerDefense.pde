@@ -19,8 +19,8 @@ Cell currentCell = null;
 ArrayList<Towers> TowersInGame = new ArrayList<Towers>();
 ArrayList<Object> Objects = new ArrayList<Object>();
 ArrayList<Object> Tower = new ArrayList<Object>();
-
-
+public int towerChoice = 1;
+public int lives = 20;
 
 void draw()
 {
@@ -35,23 +35,17 @@ void draw()
   rect(500,50,150,50);
   rect(650,50,50,250);
   rect(700,250,100,50);
-  fill(0,0,127);
-  rect(0,450,800,150);
+  
+
   
   //draw the menu
-  stroke(255);
+  noStroke();
+  fill(0,127,127);
+  rect(0,450,800,150);
   fill(127);
   rect(50,475,100,100);
   rect(175,475,100,100);
   rect(300,475,100,100);
-  
-  
-  /*for(int i = Tower.size() - 1 ; i >= 0   ;i --)
-  {
-    Object T1 = Tower.get(i);
-    T1.update();
-    T1.render();
-  }*/
   
   for(int i = 0 ; i < TowersInGame.size() ; i++)
   {
@@ -71,6 +65,8 @@ void draw()
     enemy = new Creeps();
     Objects.add(enemy);
   }
+  stroke(255);
+  text("Lives: " + lives,700,500);
   cellCheck();
 }
 
@@ -95,6 +91,30 @@ void mousePressed()
       currentCell.buildTower(new Towers(currentCell.cellx, currentCell.celly));
     }
   } 
+}
+void mouseClicked()
+{
+  if(mouseX > 50 && mouseX < 150)
+  {
+    if(mouseY > 475 && mouseY < 575)
+    {
+      towerChoice = 1;
+    }
+  }
+  if(mouseX > 175 && mouseX < 275)
+  {
+    if(mouseY > 475 && mouseY < 575)
+    {
+      towerChoice = 2;
+    }
+  }
+  if(mouseX > 300 && mouseX < 400)
+  {
+    if(mouseY > 475 && mouseY < 575)
+    {
+      towerChoice = 3;
+    }
+  }
 }
 void setPath()
 {

@@ -1,7 +1,8 @@
 class Creeps extends Object
 {
   int speed = 10;
- 
+  public float px;
+  public float py;
   Creeps()
   {
    
@@ -37,8 +38,14 @@ class Creeps extends Object
     {
       position.x ++;
     }
-    
-    
+    if(position.x > 800 )
+    {
+      lives--;
+      Objects.remove(this);
+    }
+    //println(position.x,position.y);
+    //px = this.position.x;
+    //py = this.position.y;
   }
   
   void render()

@@ -26,7 +26,7 @@ class Cell
  
   void cellOutline()
   {
-    stroke(255,0,0);
+    stroke(0,127,0);
     noFill();
     rect( cellx * cellSize, celly * cellSize,  cellSize,  cellSize);
   }

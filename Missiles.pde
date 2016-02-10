@@ -9,7 +9,7 @@ class Missiles extends Object
   {
      if (Mpos.x < 0 || Mpos.y < 0 || Mpos.x > width || Mpos.y > height - 150)
      {
-      Object.remove(this);
+      //Missiles.remove(this);
      }
      dir.mult(speed);
      Mpos.add(dir);
