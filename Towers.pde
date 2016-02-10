@@ -10,6 +10,7 @@ class Towers extends Object
      translate(cellX * cellSize, cellY * cellSize);
      rect(12.5,12.5,25,25);
      popMatrix();
+     render();
   }
   
   Towers(int x, int y)
@@ -19,35 +20,40 @@ class Towers extends Object
   }
   void shoot()
   {
-    Missiles missile = new Missiles();
-    Mpos.x = (cellX * cellSize) + 12.5;
-    Mpos.y = (cellY * cellSize) + 12.5;
+    //Missiles missile = new Missiles();
+    Object missile = null;
+    missile = new Missiles();
+    Objects.add(missile);
+    missile.Mpos.x = (cellX * cellSize) + 12.5;
+    missile.Mpos.y = (cellY * cellSize) + 12.5;
   }
   
-  /*boolean inRange()
-  {
-    if(dist((cellX * cellSize) + 12.5 , (cellY * cellSize) + 12.5, .position.x, .position.y) < 200)
-    {
-      return true;
-    }
-    else
-    {
-      return false;
-    }
-  }*/
+  boolean inRange = false;
+  
+  
   
   void render()
   {
-    /*if(inRange == true)
+    if (frameCount % 60 == 0)
     {
-      println("test");
-      shoot();
-    }*/
+      for( int i = 0 ; i < Objects.size() ; i++ )
+       {
+         //println(dist((cellX * cellSize) + 12.5 , (cellY * cellSize) + 12.5, Objects.get(i).position.x, Objects.get(i).position.y));     
+         if(dist((cellX * cellSize) + 12.5 , (cellY * cellSize) + 12.5, Objects.get(i).position.x, Objects.get(i).position.y) < 200)
+         {
+           inRange = true;
+         }
+       }
+       if(inRange == true)
+       {
+         shoot();
+         println("test");
+       }
+    }
   }
   void update()
   {
    
   }
-  
   
 }

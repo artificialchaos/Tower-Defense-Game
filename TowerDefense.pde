@@ -16,9 +16,10 @@ Cell currentCell = null;
 ArrayList<Towers> TowersInGame = new ArrayList<Towers>();
 ArrayList<Object> Objects = new ArrayList<Object>();
 ArrayList<Object> Tower = new ArrayList<Object>();
+//ArrayList<Object> Missile = new ArrayList<Object>();
 public int towerChoice = 1;
 public int lives = 20;
-public int money = 100;
+public int money = 200;
 
 void draw()
 {
@@ -38,8 +39,6 @@ void draw()
   fill(0,127,127);
   rect(0,450,800,150);
   
-
-
   
   for(int i = 0 ; i < TowersInGame.size() ; i++)
   {
@@ -59,10 +58,22 @@ void draw()
     enemy = new Creeps();
     Objects.add(enemy);
   }
-  stroke(255);
-  text("Lives: " + lives,700,500);
-  text("Money: $" + money,700,540);
+  stroke(0);
+  fill(255);
+  textSize(25);
+  text("Lives: " + lives,150,520);
+  text("Money: $" + money,500,520);
   cellCheck();
+  //Towers.render();
+  
+  if (lives < 1)
+  {
+    fill(0);
+    rect(0,0,800,600);
+    textSize(100);
+    fill(255);
+    text("Game Over",135, 200);
+  }
 }
 
 void cellCheck()
