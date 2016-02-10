@@ -20,6 +20,7 @@ public int towerChoice = 1;
 public int lives = 20;
 public int money = 200;
 public int score = 0;
+int spawnRate = 100;
 
 void draw()
 {
@@ -51,8 +52,11 @@ void draw()
     obj.update();
     obj.render();
   }
-  
-  if (frameCount % 90 == 0)//spawns a creep every 90 frames
+  if (score % 2000 == 0)
+  {
+    spawnRate = spawnRate + 5;
+  }
+  if (frameCount % spawnRate == 0)//spawns a creep every 90 frames
   {
     Object enemy = null;
     enemy = new Creeps();

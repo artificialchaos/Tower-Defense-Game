@@ -32,26 +32,27 @@ class Towers extends Object
   
   boolean inRange = false;
   
-  
-  
   void render()
   {
-    if (frameCount % 60 == 0)
-    {
-      for( int i = 0 ; i < Objects.size() ; i++ )
+       for( int i = 0 ; i < Objects.size() ; i++ )
        {  
          if(dist((cellX * cellSize) + 25 , (cellY * cellSize) + 25, Objects.get(i).position.x, Objects.get(i).position.y) < 250)
          {
            inRange = true;
-           Objects.get(i).theta = tan(sq(((cellX * cellSize) + 25) - Objects.get(i).position.x)/sq(((cellY * cellSize) + 25) - Objects.get(i).position.y));
+           
+           Objects.get(i).theta = sq(((cellX * cellSize) + 25) - Objects.get(i).position.x)/sq(((cellY * cellSize) + 25) - Objects.get(i).position.y);
          }
+
        }
        
        if(inRange == true)
        {
-         shoot();
+         if (frameCount % 60 == 0)
+         {
+           shoot();
+         }
        }
-    }
+    
   }
   void update()
   {
