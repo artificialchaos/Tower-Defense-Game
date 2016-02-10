@@ -11,6 +11,7 @@ void setup()
 }
 
 int cellSize = 50;
+int spawnRate = 100;
 Cell[][] Map = new Cell[16][9];
 Cell currentCell = null;
 ArrayList<Towers> TowersInGame = new ArrayList<Towers>();
@@ -20,7 +21,6 @@ public int towerChoice = 1;
 public int lives = 20;
 public int money = 200;
 public int score = 0;
-int spawnRate = 100;
 
 void draw()
 {
@@ -56,7 +56,7 @@ void draw()
   {
     spawnRate = spawnRate + 5;
   }
-  if (frameCount % spawnRate == 0)//spawns a creep every 90 frames
+  if (frameCount % 90 == 0)//spawns a creep every 90 frames
   {
     Object enemy = null;
     enemy = new Creeps();

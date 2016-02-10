@@ -36,13 +36,11 @@ class Towers extends Object
   {
        for( int i = 0 ; i < Objects.size() ; i++ )
        {  
+         Objects.get(i).theta = sq(((cellX * cellSize) + 25) - Objects.get(i).position.x)/sq(((cellY * cellSize) + 25) - Objects.get(i).position.y);
          if(dist((cellX * cellSize) + 25 , (cellY * cellSize) + 25, Objects.get(i).position.x, Objects.get(i).position.y) < 250)
          {
            inRange = true;
-           
-           Objects.get(i).theta = sq(((cellX * cellSize) + 25) - Objects.get(i).position.x)/sq(((cellY * cellSize) + 25) - Objects.get(i).position.y);
          }
-
        }
        
        if(inRange == true)

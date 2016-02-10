@@ -12,8 +12,8 @@ class Missiles extends Object
      }
      dir.x = sin(theta);
      dir.y = -cos(theta);
-     //println(theta);
-     println(sin(theta),-cos(theta));
+     println(theta);
+     //println(sin(theta),-cos(theta));
      dir.mult(speed);
      Mpos.add(dir);
   }

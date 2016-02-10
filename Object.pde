@@ -8,7 +8,7 @@ abstract class Object
   PVector forward = new PVector(1,0);
   PVector up = new PVector(0,-1);
   PVector down = new PVector(0,1);
-  float theta = 7f;
+  float theta = 0.0f;
   int health = 2;
   Object()
   {
